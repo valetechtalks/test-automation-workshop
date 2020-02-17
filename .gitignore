@@ -1,0 +1,7 @@
+# ctags file
+tags
+
+# vim session and temporary files
+Session.vim
+Session.lock
+*~
