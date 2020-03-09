@@ -4,16 +4,19 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+jsondiff = "*"
 
 [packages]
 flask = "~=1.1"
 python-dotenv = "~=0.12"
 pycodestyle = "~=2.5"
 stories = "~=0.12"
+flask-api = "~=2.0"
 
 [requires]
 python_version = "3.8"
 
 [scripts]
 server = "flask run"
-lint = "pycodestyle ./"
+lint = "pycodestyle"
+test = "pytest"

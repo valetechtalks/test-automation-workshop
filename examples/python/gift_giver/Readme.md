@@ -10,12 +10,17 @@ pipenv shell # Spawns a shell within the virtualenv.
 pipenv install --dev # Install all dependencies for a project (including dev):
 ```
 
-# Running the project
+# Run
 ```shell
 pipenv run server
 ```
 
-# Lintinning the project
+# Test
+```shell
+pipenv run test
+```
+
+# Lint
 ```shell
 pipenv run lint
 ```

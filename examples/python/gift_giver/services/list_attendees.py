@@ -1,5 +1,4 @@
-from stories import story, Success, Result
-from flask import jsonify
+from stories import story, Success, Failure, Result
 
 class ListAttendees:
     @story
@@ -9,7 +8,7 @@ class ListAttendees:
 
     def sucess(self, ctx):
         attendess = [{ 'name': 'Foo' }, { 'name': 'Bar' }]
-        return Success(result=jsonify(attendess))
+        return Success(result=attendess)
 
     def finish(self, ctx):
         return Result(ctx)
