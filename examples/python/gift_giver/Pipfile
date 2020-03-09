@@ -4,19 +4,20 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-jsondiff = "*"
+expects = "~=0.9"
+mamba = "~=0.10"
+pycodestyle = "~=2.5"
 
 [packages]
 flask = "~=1.1"
 python-dotenv = "~=0.12"
-pycodestyle = "~=2.5"
 stories = "~=0.12"
 flask-api = "~=2.0"
 
 [requires]
-python_version = "3.8"
+python_version = "3.7.0"
 
 [scripts]
 server = "flask run"
 lint = "pycodestyle"
-test = "pytest"
+test = "mamba"
