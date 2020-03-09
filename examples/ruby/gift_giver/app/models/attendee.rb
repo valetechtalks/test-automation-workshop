@@ -1,4 +1,4 @@
 class Attendee < ApplicationRecord
-    #validates :name, :awarded, presence: true
-    # validates :email, uniqueness: true
+    validates :vendor_user_id, :awarded, presence: true
+    validates :vendor_user_id, uniqueness: true
 end

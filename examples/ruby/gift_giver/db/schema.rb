@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_154442) do
+ActiveRecord::Schema.define(version: 2020_03_09_224325) do
 
   create_table "attendees", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "languages"
+    t.string "vendor_user_id"
+    t.string "rsvp_answer"
     t.boolean "awarded"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
