@@ -1,4 +1,5 @@
 class Attendee < ApplicationRecord
-    validates :vendor_user_id, :awarded, presence: true
+    validates :vendor_user_id, presence: true
     validates :vendor_user_id, uniqueness: true
+    validates :awarded, inclusion: { in: [ true, false ] }
 end
