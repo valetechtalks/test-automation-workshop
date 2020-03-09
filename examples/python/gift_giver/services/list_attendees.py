@@ -1,5 +1,6 @@
 from stories import story, Success, Failure, Result
 
+
 class ListAttendees:
     @story
     def list(I):
@@ -7,7 +8,7 @@ class ListAttendees:
         I.finish
 
     def sucess(self, ctx):
-        attendess = [{ 'name': 'Foo' }, { 'name': 'Bar' }]
+        attendess = [{'name': 'Foo'}, {'name': 'Bar'}]
         return Success(result=attendess)
 
     def finish(self, ctx):

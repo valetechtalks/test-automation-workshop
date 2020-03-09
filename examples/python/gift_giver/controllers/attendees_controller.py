@@ -9,5 +9,5 @@ class AttendeesController:
         if response.is_success:
             return jsonify(ListAttendees().list.run().value.result)
         else:
-            content = { 'status': 'not found' }
+            content = {'status': 'not found'}
             return content, status.HTTP_404_NOT_FOUND
