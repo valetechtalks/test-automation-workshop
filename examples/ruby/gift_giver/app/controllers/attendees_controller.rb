@@ -5,7 +5,7 @@ class AttendeesController < ApplicationController
   end
 
   def awarded
-    attendees = Attendee.awarded
+    attendees = Attendee.awarded.order(updated_at: :desc)
     render json: attendees
   end
 end
