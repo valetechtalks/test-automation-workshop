@@ -1,0 +1,4 @@
+databases:
+    main:
+        driver: sqlite
+        database: database.db

@@ -2,3 +2,5 @@
 .DS_Store
 .env
 .pytest_cache
+*.db
+orator.yml

@@ -1,5 +1,10 @@
+import os
 from flask import Flask
-from controllers.attendees_controller import AttendeesController
+from routes import routes
+from config import config
+import database
+
 
 app = Flask(__name__)
-app.add_url_rule('/', 'index', AttendeesController().index)
+app = config(app)
+routes(app)
