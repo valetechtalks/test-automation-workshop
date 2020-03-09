@@ -6,18 +6,17 @@ class RefreshController < ApplicationController
     rsvps = json.map { |item| item.slice('member', 'answers') }
 
     rsvps.each do |rsvp|
-      rsvp_answer = if rsvp['answers'].present?
-        rsvp['answers'].first.try(:[], 'answer')
-      else
-        nil
-      end
+      rsvp_answer = rsvp['answers'].present? ? rsvp['answers'].first.try(:[], 'answer') : nil
 
-      Attendee.create!(
-        name: rsvp['member']['name'],
-        vendor_user_id: rsvp['member']['id'],
-        rsvp_answer: rsvp_answer,
-        awarded: false,
-      )
+      Attendee
+        .create_with(
+          name: rsvp['member']['name'],
+          rsvp_answer: rsvp_answer,
+          awarded: false,
+        )
+        .find_or_create_by(
+          vendor_user_id: rsvp['member']['id'],
+        )
     end
 
     render :ok
