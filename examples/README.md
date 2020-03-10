@@ -2,7 +2,7 @@
 
 This folder contains code samples for many languages covered in the workshop.
 
-Please, save examples using the folowying directory structure:
+Please, add examples using the following directory structure:
 
 - Language
   + Project/Sample name
