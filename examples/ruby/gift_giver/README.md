@@ -8,7 +8,7 @@
 # Get the sources
 
 ```shell
-git clone --branch ruby-v1.0.0-no-tests https://github.com/valetechtalks/test-automation-workshop.git
+git clone --branch ruby-v1.0.1-no-tests https://github.com/valetechtalks/test-automation-workshop.git
 cd test-automation-workshop/examples/ruby/gift_giver
 ```
 
@@ -19,7 +19,7 @@ bundle install
 bundle exec foreman start
 ```
 
-Access http://localhost:5000/
+Access http://localhost:3000/
 
 # Test
 
