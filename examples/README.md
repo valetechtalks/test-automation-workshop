@@ -8,97 +8,67 @@ Please, add examples using the following directory structure:
   + Project/Sample name
     * Code
 
-# Sorteador de prêmios
+# Gift Giver
 
-A aplicação deve obter a lista de RSVPs do meetup.com e salvar em um banco de dados (Relacional ou em memória).
+The application gets a list of RSVPs from meetup.com and store in a database of your choice.
 
-- Endpoint ou background job capaz de buscar e salvar os participantes do evento em um banco de dados (Relacional ou em memória).
-  - Regras:
-    - O nome deve ser único;
-    - Não pode repetir o mesmo participante;
-  - Atributos do participante:
-    - name { Nome } [String] (Não pode ser nulo);
-    - languages { Resposta da pergunta "Quais linguagens de programação você usa?" } [Array] (Default [] - Não pode ser nullo);
-    - awarded { Já ganhou recebeu algum prêmio } [Boolean] (Default é false - Não pode ser nullo);
+Follow the guidelines below for database schema and ednpoints.
 
-Exemplo casos for um endpoint: `[POST] \refresh\`
+## Schema
 
-Url para buscar participantes: https://api.meetup.com/valetechtalks/events/268854460/rsvps?&sign=true&photo-host=public&fields=answers
+The database schema may slightly vary from one application to another.
 
-- Endpoint capaz de inserir participantes que não confirmaram presença via o Meetup.com [Opcional] 
+- `attendees` table
+  + `name` (string, required) attendee name
+  + `vendor_user_id` (string, required, unique) user id from meetup.com or other network
+  + `rsvp_answer` (string, optional) answer for rsvp question
+  + `awarded` (boolean, required) true if the attendee already receive a prize
 
-Rota: `[POST] \attendees\`
+## Endpoints
+
+### `GET /attendees`
+
+- (mandatory) Get the full list of attendees
+- (optional) Filter list by fields (e.g. `name`)
+
+Response:
+```json
+[
+  { "name": "Foo", "vendor_user_id": 999, "awarded": false },
+  { "name": "Bar", "vendor_user_id": 999, "awarded": true }
+]
+```
+
+### `POST /attendees`
+
+- (optional) Add a new attendee to the database.
 
 Body: 
-```
+```json
 {
-  name: "Foobar"
+  "name": "Foobar"
 }
 ```
 
-- Endpoint capaz de obter a lista de participates.
+### `POST /attendees/draw`
 
-Rota: `[GET] \attendees\`
+- (mandatory) Draw a random attendee from the list
+- (mandatory) Mark `awarded = true` for the drawn attendee
 
-Resposta:
-```
+Once drawn, an attendee cannot be drawn again.
+
+Response:
+```json
 [
-  { name: "Foo", languages: ["Python", "C#"], awarded: false },
-  { name: "Bar", languages: ["Java", "PHP"], awarded: true }
+  { "name": "Bar", "vendor_user_id": 999, "awarded": true }
 ]
 ```
 
-- Endpoint capaz de filter por participate com filtros [Opcional].
+### `POST /refresh`
 
-Rota: `[GET] \attendees?name=Foo&languages=Python&awarded=false`
+- (mandatory) Sync / refresh the attendees list from meetup.com
 
-Resposta:
-```
-[
-  { name: "Foo", languages: ["Python", "C#"], awarded: false }
-]
-```
-  - Parâmetros de pesquisa:
-    - name (String)
-    - languages (String)
-    - awarded (Boolean)
-    
-- Endpoint capaz de filtrar por participate com filtros [Opcional].
+Url to fetch RSVP from:
 
-Rota: `[GET] \attendees?name=Foo&languages=Python&awarded=false`
+- https://api.meetup.com/valetechtalks/events/268854460/rsvps?&sign=true&photo-host=public&fields=answers
 
-Resposta:
-```
-[
-  { name: "Foo", languages: ["Python", "C#"], awarded: false }
-]
-```
-  - Parâmetros de pesquisa:
-    - name (String)
-    - languages (String)
-    - awarded (Boolean)
-    
-- Endpoint capaz de listar as linguagens mais usadas [Opcional].
-
-Rota: `[GET] \languages\`
-
-Resposta:
-```
-[
-  { name: "Python", attendants_using: 10 },
-  { name: "Java", attendants_using: 8 }
-]
-```
-A resposta precisa vir ordenada por quantidade de participantes usando a linguagem.
-
-- Endpoint capaz de sortear o prêmio.
-
-Rota: `[POST] \draw\`
-
-Resposta:
-```
-[
-  { name: "Foo" }
-]
-```
-  - Após sorteado o participante não poderá mais receber prêmios e o atributo awarded dele deve ser marcado como true.
