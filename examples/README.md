@@ -41,7 +41,7 @@ Response:
 
 ### `POST /attendees`
 
-- (optional) Add a new attendee to the database.
+- (optional) Add a new attendee to the database
 
 Body: 
 ```json
