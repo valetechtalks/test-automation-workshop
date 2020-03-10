@@ -50,6 +50,18 @@ Body:
 }
 ```
 
+### `GET /attendees/awarded`
+
+- (mandatory) Get the list of awarded attendees, in decrescent order
+
+Response:
+```json
+[
+  { "name": "Foo", "vendor_user_id": 999, "awarded": true },
+  { "name": "Bar", "vendor_user_id": 999, "awarded": true }
+]
+```
+
 ### `POST /attendees/draw`
 
 - (mandatory) Draw a random attendee from the list
