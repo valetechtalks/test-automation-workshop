@@ -1,18 +1,23 @@
 class RefreshController < ApplicationController 
-    URL = 'https://api.meetup.com/valetechtalks/events/268854460/rsvps?&sign=true&photo-host=public&fields=answers'
+  def index
+    response = ::HTTParty.get(ENV['MEETUP_RSVP_URL'])
+    json = JSON.parse(response.body)
+    rsvps = json.map { |item| item.slice('member', 'answers') }
 
-    def index
-        json = JSON.parse(::HTTParty.get(URL).body)
-        names = json.map { |item| item['member']['name'] }
-        names.each do |name|
-            Attendee.create!(
-              name: name,
-              awarded: false,
-              email: "#{name}@example.com"
-            )
+    rsvps.each do |rsvp|
+      rsvp_answer = rsvp['answers'].present? ? rsvp['answers'].first.try(:[], 'answer') : nil
 
-        end
-
-        render :ok
+      Attendee
+        .create_with(
+          name: rsvp['member']['name'],
+          rsvp_answer: rsvp_answer,
+          awarded: false,
+        )
+        .find_or_create_by(
+          vendor_user_id: rsvp['member']['id'],
+        )
     end
+
+    render :ok
+  end
 end

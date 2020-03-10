@@ -1,4 +1,6 @@
 class Attendee < ApplicationRecord
-    #validates :name, :awarded, presence: true
-    # validates :email, uniqueness: true
+  validates :vendor_user_id, presence: true, uniqueness: true
+  validates :awarded, inclusion: { in: [ true, false ] }
+
+  scope :awarded, -> { where(awarded: true) }
 end
