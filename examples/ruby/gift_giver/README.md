@@ -12,7 +12,7 @@ bundle install
 
 # Run
 ```shell
-bundle exec rails s
+bundle exec foreman start
 ```
 
 Access http://localhost:5000/

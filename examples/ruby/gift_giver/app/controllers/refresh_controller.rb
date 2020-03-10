@@ -1,8 +1,7 @@
 class RefreshController < ApplicationController 
-  URL = 'https://api.meetup.com/valetechtalks/events/268854460/rsvps?&sign=true&photo-host=public&fields=answers'
-
   def index
-    json = JSON.parse(::HTTParty.get(URL).body)
+    response = ::HTTParty.get(ENV['MEETUP_RSVP_URL'])
+    json = JSON.parse(response.body)
     rsvps = json.map { |item| item.slice('member', 'answers') }
 
     rsvps.each do |rsvp|
