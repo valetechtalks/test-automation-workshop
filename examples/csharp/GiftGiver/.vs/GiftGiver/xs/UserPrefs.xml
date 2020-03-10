@@ -1,4 +1,35 @@
 ﻿<Properties StartupConfiguration="{911F6D70-F144-487F-ADB7-1C323A6202CF}|Default">
-  <MonoDevelop.Ide.ItemProperties.GiftGiver FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GiftGiver/Controllers/AttendeesController.cs">
+    <Files>
+      <File FileName="GiftGiver/Controllers/AttendeesController.cs" Line="19" Column="1" />
+      <File FileName="GiftGiver/Controllers/RefreshController.cs" Line="3" Column="1" />
+      <File FileName="GiftGiver/Controllers/DrawController.cs" Line="15" Column="26" />
+      <File FileName="GiftGiver/Startup.cs" Line="41" Column="30" />
+      <File FileName="GiftGiver/Models/GiftGiverContext.cs" Line="23" Column="35" />
+      <File FileName="GiftGiver/Models/Attendee.cs" Line="10" Column="20" />
+      <File FileName="GiftGiver/Models/BaseEntity.cs" Line="10" Column="15" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GiftGiver" expanded="True">
+            <Node name="GiftGiver" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="AttendeesController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GiftGiver PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
