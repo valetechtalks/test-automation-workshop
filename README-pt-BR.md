@@ -1,4 +1,4 @@
-# Examplos
+# Exemplos
 
 Este diretório contém exemplos de código em diversas linguagens de programação cobertas pelo workshop.
 

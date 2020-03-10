@@ -12,7 +12,7 @@ Please, add examples using the following directory structure:
 
 The application gets a list of RSVPs from meetup.com and store in a database of your choice.
 
-Follow the guidelines below for database schema and ednpoints.
+Follow the guidelines below for database schema and endpoints.
 
 ## Schema
 
@@ -22,7 +22,7 @@ The database schema may slightly vary from one application to another.
   + `name` (string, required) attendee name
   + `vendor_user_id` (string, required, unique) user id from meetup.com or other network
   + `rsvp_answer` (string, optional) answer for rsvp question
-  + `awarded` (boolean, required) true if the attendee already receive a prize
+  + `awarded` (boolean, required) true if the attendee already received a prize
 
 ## Endpoints
 
