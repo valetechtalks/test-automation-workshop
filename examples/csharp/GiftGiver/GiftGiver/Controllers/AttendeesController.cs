@@ -11,26 +11,27 @@ namespace GiftGiver.Controllers
     [Route("[controller]")]
     public class AttendeesController : ControllerBase
     {
+        private readonly GiftGiverContext _context;
+
+        public AttendeesController(GiftGiverContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public IEnumerable<Attendee> Get()
         {
-            using (var db = new GiftGiverContext())
-            {
-                return db.Attendees.ToArray();
-            }
+            return _context.Attendees.ToArray();
         }
 
         [Route("awarded")]
         [HttpGet]
         public IEnumerable<Attendee> GetAwarded()
         {
-            using (var db = new GiftGiverContext())
-            {
-                return db.Attendees
-                    .Where(attendee => attendee.Awarded)
-                    .OrderByDescending(attendee => attendee.UpdatedDate)
-                    .ToArray();
-            }
+            return _context.Attendees
+                .Where(attendee => attendee.Awarded)
+                .OrderByDescending(attendee => attendee.UpdatedDate)
+                .ToArray();
         }
     }
 }

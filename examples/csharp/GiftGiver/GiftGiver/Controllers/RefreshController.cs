@@ -17,10 +17,12 @@ namespace GiftGiver.Controllers
     public class RefreshController : ControllerBase
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly GiftGiverContext _context;
 
-        public RefreshController(IHttpClientFactory clientFactory)
+        public RefreshController(IHttpClientFactory clientFactory, GiftGiverContext context)
         {
             _clientFactory = clientFactory;
+            _context = context;
         }
 
         [HttpPost]
@@ -44,34 +46,31 @@ namespace GiftGiver.Controllers
                     responseStream,
                     options
                     );
-
-                using (var db = new GiftGiverContext())
+                
+                foreach (var eventInfo in events)
                 {
-                    foreach (var eventInfo in events)
+                    var attendee = _context.Attendees.Where(attendee => attendee.VendorUserId == eventInfo.Member.Id).FirstOrDefault();
+                    var imageUrl = eventInfo.Member.Photo?.PhotoLink;
+
+                    if (attendee == null)
                     {
-                        var attendee = db.Attendees.Where(attendee => attendee.VendorUserId == eventInfo.Member.Id).FirstOrDefault();
-                        var imageUrl = eventInfo.Member.Photo?.PhotoLink;
-
-                        if (attendee == null)
-                        { 
-                            db.Attendees.Add(new Attendee
-                            {
-                                VendorUserId = eventInfo.Member.Id,
-                                Name = eventInfo.Member.Name,
-                                ImageUrl = imageUrl,
-                                Awarded = false,
-                            });
-                        }
-                        else
+                        _context.Attendees.Add(new Attendee
                         {
-                            attendee.VendorUserId = eventInfo.Member.Id;
-                            attendee.Name = eventInfo.Member.Name;
-                            attendee.ImageUrl = imageUrl;
-                        }
+                            VendorUserId = eventInfo.Member.Id,
+                            Name = eventInfo.Member.Name,
+                            ImageUrl = imageUrl,
+                            Awarded = false,
+                        });
                     }
-
-                    db.SaveChanges();
+                    else
+                    {
+                        attendee.VendorUserId = eventInfo.Member.Id;
+                        attendee.Name = eventInfo.Member.Name;
+                        attendee.ImageUrl = imageUrl;
+                    }
                 }
+
+                _context.SaveChanges();
 
                 return "Synced";
             }
@@ -84,15 +83,12 @@ namespace GiftGiver.Controllers
         [HttpDelete]
         public void Delete()
         {
-            using (var db = new GiftGiverContext())
+            foreach (var attendee in _context.Attendees)
             {
-                foreach (var attendee in db.Attendees)
-                {
-                    db.Attendees.Remove(attendee);
-                }
-
-                db.SaveChanges();
+                _context.Attendees.Remove(attendee);
             }
+
+            _context.SaveChanges();
         }
     }
 }

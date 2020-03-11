@@ -13,28 +13,32 @@ namespace GiftGiver.Controllers
     [Route("[controller]")]
     public class DrawController : ControllerBase
     {
+        private readonly GiftGiverContext _context;
+
+        public DrawController(GiftGiverContext context)
+        {
+            _context = context;
+        }
+
         [HttpPost]
         public Attendee Post()
         {
-            using (var db = new GiftGiverContext())
+            var query = _context.Attendees.Where(attendee => attendee.Awarded == false);
+            var attendeeCount = query.Count();
+
+            if (attendeeCount > 0)
             {
-                var query = db.Attendees.Where(attendee => attendee.Awarded == false);
-                var attendeeCount = query.Count();
+                var random = new Random();
+                var randomIndex = random.Next(attendeeCount);
+                var attendee = query.Take(randomIndex).First();
 
-                if (attendeeCount > 0)
-                {
-                    var random = new Random();
-                    var randomIndex = random.Next(attendeeCount);
-                    var attendee = query.Take(randomIndex).First();
+                attendee.Awarded = true;
+                _context.SaveChanges();
 
-                    attendee.Awarded = true;
-                    db.SaveChanges();
-
-                    return attendee;
-                }
-
-                throw new Exception("No Attendee Found");
+                return attendee;
             }
+
+            throw new Exception("No Attendee Found");
         }
     }
 }

@@ -7,10 +7,11 @@ namespace GiftGiver.Models.Database
 {
     public class GiftGiverContext : DbContext
     {
-        public DbSet<Attendee> Attendees { get; set; }
+        public GiftGiverContext(DbContextOptions<GiftGiverContext> options)
+            : base(options)
+        { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=giftGiver.db");
+        public DbSet<Attendee> Attendees { get; set; }
 
         public override int SaveChanges()
         {
