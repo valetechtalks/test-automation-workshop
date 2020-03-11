@@ -1,7 +1,6 @@
 package io.github.valetechtalks.giftgiver.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
-
 import io.github.valetechtalks.giftgiver.entities.Attendee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +11,6 @@ public class AttendeesController {
 
     @GetMapping("/attendees")
     public Attendee Index() {
-        return new Attendee(1, "999", "Paulo", "", false);
+        return new Attendee(1, (long) 999, "Paulo", "", false);
     }
 }

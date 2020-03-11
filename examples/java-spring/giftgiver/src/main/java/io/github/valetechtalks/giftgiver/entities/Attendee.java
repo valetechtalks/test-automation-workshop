@@ -2,12 +2,12 @@ package io.github.valetechtalks.giftgiver.entities;
 
 public class Attendee {
     private final int id;
-    private final String vendorUserId;
+    private final Long vendorUserId;
     private final String name;
     private final String rsvpAnswer;
     private final boolean awarded;
 
-    public Attendee(int id, String vendorUserId, String name, String rsvpAnswer, boolean awarded) {
+    public Attendee(int id, Long vendorUserId, String name, String rsvpAnswer, boolean awarded) {
         this.id = id;
         this.vendorUserId = vendorUserId;
         this.name = name;
@@ -19,7 +19,7 @@ public class Attendee {
         return id;
     }
 
-    public String getVendorUserId() {
+    public Long getVendorUserId() {
         return vendorUserId;
     }
 
