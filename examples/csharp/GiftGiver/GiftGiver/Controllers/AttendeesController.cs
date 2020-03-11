@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GiftGiver.Models;
+using GiftGiver.Models.Database;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GiftGiver.Controllers

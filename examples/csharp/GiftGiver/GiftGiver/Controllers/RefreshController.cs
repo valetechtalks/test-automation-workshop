@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using GiftGiver.Models;
+using GiftGiver.Models.Database;
 using GiftGiver.Models.Meetup;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,13 +55,14 @@ namespace GiftGiver.Controllers
                         { 
                             db.Attendees.Add(new Attendee
                             {
-                                AttendeeId = eventInfo.Member.Id,
+                                VendorUserId = eventInfo.Member.Id,
                                 Name = eventInfo.Member.Name,
                                 Awarded = false,
                             });
                         }
                         else
                         {
+                            attendee.VendorUserId = eventInfo.Member.Id;
                             attendee.Name = eventInfo.Member.Name;
                         }
                     }
@@ -74,6 +75,20 @@ namespace GiftGiver.Controllers
             else
             {
                 return "Error";
+            }
+        }
+
+        [HttpDelete]
+        public void Delete()
+        {
+            using (var db = new GiftGiverContext())
+            {
+                foreach (var attendee in db.Attendees)
+                {
+                    db.Attendees.Remove(attendee);
+                }
+
+                db.SaveChanges();
             }
         }
     }

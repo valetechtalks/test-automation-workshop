@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-namespace GiftGiver.Models
+
+namespace GiftGiver.Models.Database
 {
     public class BaseEntity
     {

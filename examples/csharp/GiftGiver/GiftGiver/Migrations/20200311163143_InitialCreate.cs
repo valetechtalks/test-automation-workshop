@@ -17,13 +17,18 @@ namespace GiftGiver.Migrations
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     VendorUserId = table.Column<int>(nullable: false),
                     RsvpAnswer = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Awarded = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Attendees", x => x.AttendeeId);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Attendees_VendorUserId",
+                table: "Attendees",
+                column: "VendorUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace GiftGiver.Models
+namespace GiftGiver.Models.Database
 {
     public class GiftGiverContext : DbContext
     {
@@ -31,6 +31,14 @@ namespace GiftGiver.Models
             }
 
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Attendee>()
+                .HasIndex(attendee => attendee.VendorUserId);
         }
     }
 }
