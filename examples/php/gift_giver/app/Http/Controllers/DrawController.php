@@ -8,8 +8,10 @@ class DrawController extends Controller
 {
     public function index() {
         $attendee = Attendee::notAwarded()
-                      ->inRandomOrder()
-                      ->first();
+                        ->inRandomOrder()
+                        ->first();
+        if (empty($attendee))
+            return;
 
         $attendee->awarded = true;
         $attendee->save();
