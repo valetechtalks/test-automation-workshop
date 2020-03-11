@@ -3,14 +3,16 @@ using System;
 using GiftGiver.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GiftGiver.Migrations
 {
     [DbContext(typeof(GiftGiverContext))]
-    partial class GiftGiverContextModelSnapshot : ModelSnapshot
+    [Migration("20200311173853_AddAttendeeImageUrl")]
+    partial class AddAttendeeImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

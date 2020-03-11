@@ -21,5 +21,7 @@ namespace GiftGiver.Models.Database
 
         [Required]
         public bool Awarded { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

@@ -11,6 +11,7 @@
   "profiles": {
     "GiftGiver": {
       "commandName": "Project",
+      "launchBrowser": true,
       "launchUrl": "attendees",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

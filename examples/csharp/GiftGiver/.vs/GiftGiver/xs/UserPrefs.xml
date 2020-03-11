@@ -1,8 +1,13 @@
 ﻿<Properties StartupConfiguration="{911F6D70-F144-487F-ADB7-1C323A6202CF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GiftGiver/Models/Database/Attendee.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GiftGiver/Properties/launchSettings.json">
     <Files>
-      <File FileName="GiftGiver/Models/Database/Attendee.cs" Line="11" Column="62" />
-      <File FileName="GiftGiver/Controllers/RefreshController.cs" Line="57" Column="30" />
+      <File FileName="GiftGiver/Models/Database/Attendee.cs" Line="25" Column="31" />
+      <File FileName="GiftGiver/Controllers/RefreshController.cs" Line="37" Column="56" />
+      <File FileName="GiftGiver/Migrations/20200311173853_AddAttendeeImageUrl.cs" Line="18" Column="76" />
+      <File FileName="GiftGiver/Migrations/20200311163143_InitialCreate.cs" Line="3" Column="1" />
+      <File FileName="GiftGiver/Models/Meetup/MeetupEvent.cs" Line="10" Column="27" />
+      <File FileName="GiftGiver/Models/Meetup/MeetupEventMember.cs" Line="8" Column="27" />
+      <File FileName="GiftGiver/Properties/launchSettings.json" Line="14" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,8 +18,11 @@
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="Database" expanded="True" />
+                <Node name="Meetup" expanded="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

@@ -49,7 +49,8 @@ namespace GiftGiver.Controllers
                 {
                     foreach (var eventInfo in events)
                     {
-                        var attendee = db.Attendees.Find(eventInfo.Member.Id);
+                        var attendee = db.Attendees.Where(attendee => attendee.VendorUserId == eventInfo.Member.Id).FirstOrDefault();
+                        var imageUrl = eventInfo.Member.Photo?.PhotoLink;
 
                         if (attendee == null)
                         { 
@@ -57,6 +58,7 @@ namespace GiftGiver.Controllers
                             {
                                 VendorUserId = eventInfo.Member.Id,
                                 Name = eventInfo.Member.Name,
+                                ImageUrl = imageUrl,
                                 Awarded = false,
                             });
                         }
@@ -64,6 +66,7 @@ namespace GiftGiver.Controllers
                         {
                             attendee.VendorUserId = eventInfo.Member.Id;
                             attendee.Name = eventInfo.Member.Name;
+                            attendee.ImageUrl = imageUrl;
                         }
                     }
 
