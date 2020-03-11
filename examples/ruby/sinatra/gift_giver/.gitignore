@@ -1,0 +1,5 @@
+db/*.sqlite3
+db/*.sqlite
+config/database.yml
+.env
+.DS_Store
