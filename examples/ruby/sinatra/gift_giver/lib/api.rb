@@ -29,7 +29,7 @@ class Api < Sinatra::Base
   post '/refresh' do
     if AttendeeRefresher.call.successful?
       status 201
-      json text: 'Successfully refreshed attendees.'
+      json message: 'Successfully refreshed attendees.'
     else
       server_error
     end

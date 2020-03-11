@@ -29,3 +29,9 @@ $ bundle install
 $ rake db:setup
 $ bundle exec shotgun config.ru -p 3000
 ```
+
+## Test
+
+```console
+$ bundle exec rspec
+```

@@ -8,7 +8,7 @@ end
 
 describe Api do
   it 'responds successfully' do
-    get '/'
+    get '/attendees'
     expect(last_response.status).to eq(200)
   end
 end
