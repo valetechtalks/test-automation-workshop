@@ -7,7 +7,7 @@ class Attendee < ActiveRecord::Base
   scope :not_awarded, -> { where(awarded: false) }
 
   def self.random
-    not_awarded.limit(1).order('random()').first
+    limit(1).order('random()').first
   end
 
   def award!

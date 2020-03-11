@@ -8,10 +8,12 @@ class AttendeeRefresher
         .each do |attendee|
           member = attendee['member']
 
-          Attendee.find_or_create_by!(
-            name: member['name'],
-            vendor_user_id: member['name']
+          attendee = Attendee.find_or_initialize_by(
+            vendor_user_id: member['vendor_user_id']
           )
+
+          attendee.name = member['name']
+          attendee.save!
         end
 
       OpenStruct.new(successful?: true)

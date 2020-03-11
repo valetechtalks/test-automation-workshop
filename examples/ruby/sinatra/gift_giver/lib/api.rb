@@ -16,7 +16,7 @@ class Api < Sinatra::Base
   end
 
   post '/attendees/draw' do
-    attendee = Attendee.random
+    attendee = Attendee.not_awarded.random
 
     if attendee&.award!
       status 201
