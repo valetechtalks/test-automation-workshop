@@ -12,7 +12,7 @@ class Api < Sinatra::Base
   end
 
   get '/attendees/awarded' do
-    json Attendee.awarded.all
+    json Attendee.awarded
   end
 
   post '/attendees/draw' do

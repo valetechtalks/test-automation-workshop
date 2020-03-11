@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
-require 'bundler/setup'
+APP_ENV = ENV['RACK_ENV'] || 'development'
 
-APP_ENV = ENV['SINATRA_ENV'] || 'development'
+require 'bundler/setup'
+require 'dotenv/load' unless APP_ENV == 'production'
 
 Bundler.require(:default, APP_ENV)
 
 ActiveRecord::Base.establish_connection(
-  YAML::load_file('./config/database.yml')[APP_ENV]
+  ENV['DATABASE_URL'] || YAML::load_file('./config/database.yml')[APP_ENV]
 )
 
 require_all 'lib'

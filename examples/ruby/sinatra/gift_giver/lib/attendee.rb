@@ -11,6 +11,6 @@ class Attendee < ActiveRecord::Base
   end
 
   def award!
-    update(awarded: true)
+    update!(awarded: true)
   end
 end

@@ -2,6 +2,8 @@
 
 This project was built using Sinatra. Complete documentation can be found on the [Sinatra website](http://sinatrarb.com).
 
+- [See it live!](https://gift-giver-sinatra.herokuapp.com/attendees)
+
 ## Dependencies
 
 ```
