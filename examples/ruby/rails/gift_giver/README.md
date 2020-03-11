@@ -9,7 +9,7 @@
 
 ```shell
 git clone --branch ruby-v1.0.1-no-tests https://github.com/valetechtalks/test-automation-workshop.git
-cd test-automation-workshop/examples/ruby/gift_giver
+cd test-automation-workshop/examples/ruby/rails/gift_giver
 ```
 
 # Run
