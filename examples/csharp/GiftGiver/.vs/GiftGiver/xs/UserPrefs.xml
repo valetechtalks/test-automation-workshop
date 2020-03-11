@@ -1,13 +1,10 @@
 ﻿<Properties StartupConfiguration="{911F6D70-F144-487F-ADB7-1C323A6202CF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GiftGiver/Controllers/AttendeesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GiftGiver/Controllers/DrawController.cs">
     <Files>
-      <File FileName="GiftGiver/Controllers/AttendeesController.cs" Line="19" Column="1" />
-      <File FileName="GiftGiver/Controllers/RefreshController.cs" Line="3" Column="1" />
-      <File FileName="GiftGiver/Controllers/DrawController.cs" Line="15" Column="26" />
-      <File FileName="GiftGiver/Startup.cs" Line="41" Column="30" />
-      <File FileName="GiftGiver/Models/GiftGiverContext.cs" Line="23" Column="35" />
-      <File FileName="GiftGiver/Models/Attendee.cs" Line="10" Column="20" />
-      <File FileName="GiftGiver/Models/BaseEntity.cs" Line="10" Column="15" />
+      <File FileName="GiftGiver/Controllers/AttendeesController.cs" Line="20" Column="14" />
+      <File FileName="GiftGiver/Controllers/RefreshController.cs" Line="21" Column="66" />
+      <File FileName="GiftGiver/Startup.cs" Line="29" Column="43" />
+      <File FileName="GiftGiver/Controllers/DrawController.cs" Line="14" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,9 +12,11 @@
           <Node name="GiftGiver" expanded="True">
             <Node name="GiftGiver" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="AttendeesController.cs" selected="True" />
+                <Node name="DrawController.cs" selected="True" />
               </Node>
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Meetup" expanded="True" />
+              </Node>
               <Node name="Properties" expanded="True" />
             </Node>
           </Node>
