@@ -16,11 +16,16 @@ class Attendee extends Model
 
     public function scopeNotAwarded($query)
     {
-        return $query->where('awarded', '=', 0);
+        return $query->where('awarded', 0);
     }
 
     public function scopeAwarded($query)
     {
-        return $query->where('awarded', '=', 1);
+        return $query->where('awarded', 1);
+    }
+
+    public function scopeMemberId($query, $memberId)
+    {
+        return $query->where('vendor_member_id', $memberId);
     }
 }
