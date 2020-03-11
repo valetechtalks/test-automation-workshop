@@ -15,8 +15,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/attendees/draw', 'DrawController@index');
+$router->post('/attendees/draw', 'DrawController@index');
 $router->get('/attendees/awarded', 'AwardedController@index');
 $router->get('/attendees', 'AttendeeController@index');
 
-$router->get('/refresh', 'RefreshController@index');
+$router->post('/refresh', 'RefreshController@index');

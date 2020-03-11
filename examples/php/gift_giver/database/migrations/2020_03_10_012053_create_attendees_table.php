@@ -17,7 +17,6 @@ class CreateAttendeesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('vendor_member_id')->unique();
             $table->string('name');
-            $table->string('languages');
             $table->boolean('awarded');
             $table->timestamps();
         });

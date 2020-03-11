@@ -16,8 +16,7 @@ class RefreshController extends Controller
             if(Attendee::where('vendor_member_id', '=', $member->id)->count() == 0) {
                 Attendee::create([
                     'name' => $member->name,
-                    'vendor_member_id' => $member->id,
-                    'languages' => ''
+                    'vendor_member_id' => $member->id
                 ]);
             }
         }

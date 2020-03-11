@@ -7,7 +7,7 @@ use App\Models\Attendee;
 class DrawController extends Controller
 {
     public function index() {
-        $attendee = Attendee::where('awarded', '=', 0)
+        $attendee = Attendee::notAwarded()
                       ->inRandomOrder()
                       ->first();
 
