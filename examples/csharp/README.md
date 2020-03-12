@@ -24,3 +24,17 @@ dotnet run --project ./GiftGiver/GiftGiver.csproj
 ```
 
 Access http://localhost:5001/attendees
+
+# Deploy
+
+This app is current deployed at [https://gift-giver-in-dotnet.herokuapp.com/](https://gift-giver-in-dotnet.herokuapp.com/).
+
+Routes:
+
+```cmd
+curl -XGET https://gift-giver-in-dotnet.herokuapp.com/attendees
+curl -XGET https://gift-giver-in-dotnet.herokuapp.com/attendees/awarded
+curl -XPOST -d='' https://gift-giver-in-dotnet.herokuapp.com/draw
+curl -XPOST -d='' https://gift-giver-in-dotnet.herokuapp.com/refresh
+curl -XDELETE https://gift-giver-in-dotnet.herokuapp.com/refresh
+```
