@@ -17,7 +17,7 @@ public class AttendeesRepository extends Repository implements IRepository {
     }
 
     @Override
-    public Attendee findBy(String field, Long value) {
+    public Attendee findBy(String field, Object value) {
         Attendee attendee = this.findBy(Attendee.class, field, value);
         return attendee;
     }
