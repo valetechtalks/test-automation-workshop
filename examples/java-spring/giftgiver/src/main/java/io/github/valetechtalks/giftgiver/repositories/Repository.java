@@ -19,7 +19,11 @@ public abstract class Repository {
     }
 
     protected <T> T findBy(Class<T> type, String field, Object value) {
-        Query query = this.buildQuery(type, field, value, "createdAt", "asc");
+        return this.findBy(type, field,value, "createdAt", "asc");
+    }
+
+    protected <T> T findBy(Class<T> type, String field, Object value, String orderBy, String direction) {
+        Query query = this.buildQuery(type, field, value, orderBy, direction);
         T data = (T) query.uniqueResult();
         return data;
     }
@@ -29,7 +33,11 @@ public abstract class Repository {
     }
 
     protected <T> List<T> findAll(Class<T> type, String orderBy, String direction) {
-        Query query = this.buildQuery(type, null, null, orderBy, direction);
+        return this.where(type, null, null, orderBy, direction);
+    }
+
+    protected <T> List<T> where(Class<T> type, String field, Object value, String orderBy, String direction) {
+        Query query = this.buildQuery(type, field, value, orderBy, direction);
         List<T> data = query.getResultList();
         return data;
     }
