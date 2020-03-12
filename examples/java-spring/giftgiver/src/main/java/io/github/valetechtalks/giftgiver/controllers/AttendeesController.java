@@ -25,7 +25,7 @@ public class AttendeesController {
 
         try {
             this.db.open();
-            attendees = this.db.getAll(Attendee.class);
+            attendees = this.db.findAll(Attendee.class);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally{

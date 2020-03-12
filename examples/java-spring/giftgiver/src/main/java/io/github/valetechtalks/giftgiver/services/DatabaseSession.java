@@ -11,6 +11,9 @@ import org.hibernate.service.ServiceRegistry;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.math.BigInteger;
 import java.util.List;
 
 public class DatabaseSession {
@@ -28,10 +31,19 @@ public class DatabaseSession {
     }
 
     public <T> T find(Class<T> type, int id) {
-        return this.session.get(type, id);
+        return this.session.find(type, id);
     }
 
-    public <T> List<T> getAll(Class<T> type) {
+    public <T> T findBy(Class<T> type, String field, Long value) {
+        CriteriaBuilder builder = this.session.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = builder.createQuery(type);
+        Root<T> root = criteria.from(type);
+        criteria.where(builder.equal(root.get(field), value));
+        T data = this.session.createQuery(criteria).uniqueResult();
+        return data;
+    }
+
+    public <T> List<T> findAll(Class<T> type) {
         CriteriaBuilder builder = this.session.getCriteriaBuilder();
         CriteriaQuery<T> criteria = builder.createQuery(type);
         criteria.from(type);

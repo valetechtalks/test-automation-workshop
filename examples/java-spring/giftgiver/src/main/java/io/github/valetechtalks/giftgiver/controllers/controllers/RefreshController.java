@@ -21,23 +21,28 @@ public class RefreshController {
     @PostMapping("/refresh")
     public void Index() {
         try {
-            this.db.open();
-            this.db.beginTransaction();
             JSONArray results = meetup.getRSVPs();
+            this.db.open();
 
             for (int i = 0; i < results.length(); i++) {
                 JSONObject item = results.getJSONObject(i);
                 JSONObject member = item.getJSONObject("member");
 
-                Attendee attendee = new Attendee();
-                attendee.setVendorUserId(member.getLong("id"));
+                Attendee attendee = this.db.findBy(Attendee.class, "vendorUserId", member.getLong("id"));
+
+                this.db.beginTransaction();
+                if (attendee == null) {
+                    attendee = new Attendee();
+                    attendee.setVendorUserId(member.getLong("id"));
+                    attendee.setAwarded(false);
+                }
+
                 attendee.setName(member.getString("name"));
-                attendee.setAwarded(false);
 
                 this.db.save(attendee);
+                this.db.commitTransaction();
             }
 
-            this.db.commitTransaction();
         } catch (Exception ex) {
             ex.printStackTrace();
             this.db.rollbackTransaction();
