@@ -1,23 +1,39 @@
 package io.github.valetechtalks.giftgiver.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "attendees")
 public class Attendee {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "vendor_user_id", unique = true, nullable = false)
     private Long vendorUserId;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(name = "rsvp_answer", nullable = true)
     private String rsvpAnswer;
-    private boolean awarded;
 
-    public Attendee() { }
+    @Column(nullable = false)
+    private boolean awarded = false;
 
-    public Attendee(int id) {
-        this.id = id;
-    }
+    @Column(name = "created_at", nullable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     public int getId() {
         return id;
@@ -53,5 +69,13 @@ public class Attendee {
 
     public void setAwarded(boolean awarded) {
         this.awarded = awarded;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 }
