@@ -1,5 +1,11 @@
 package io.github.valetechtalks.giftgiver.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "attendees")
 public class Attendee {
     private final int id;
     private final Long vendorUserId;
@@ -15,6 +21,7 @@ public class Attendee {
         this.awarded = false;
     }
 
+    @Id
     public int getId() {
         return id;
     }
