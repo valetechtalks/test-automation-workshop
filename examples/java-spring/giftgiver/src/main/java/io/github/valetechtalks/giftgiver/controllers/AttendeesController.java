@@ -1,8 +1,8 @@
 package io.github.valetechtalks.giftgiver.controllers;
 
 import io.github.valetechtalks.giftgiver.entities.Attendee;
+import io.github.valetechtalks.giftgiver.repositories.AttendeesRepository;
 import io.github.valetechtalks.giftgiver.services.DatabaseSession;
-import io.github.valetechtalks.giftgiver.services.MeetupConsumer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,11 +12,11 @@ import java.util.List;
 @RestController
 public class AttendeesController {
     private DatabaseSession db;
-    private MeetupConsumer meetup;
+    private AttendeesRepository repos;
 
     public AttendeesController() {
         this.db = new DatabaseSession();
-        this.meetup = new MeetupConsumer();
+        this.repos = new AttendeesRepository(this.db);
     }
 
     @GetMapping("/attendees")
@@ -25,7 +25,7 @@ public class AttendeesController {
 
         try {
             this.db.open();
-            attendees = this.db.findAll(Attendee.class);
+            attendees = this.repos.findAll();
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally{

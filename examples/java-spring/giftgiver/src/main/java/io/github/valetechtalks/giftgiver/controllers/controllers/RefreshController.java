@@ -1,6 +1,7 @@
 package io.github.valetechtalks.giftgiver.controllers.controllers;
 
 import io.github.valetechtalks.giftgiver.entities.Attendee;
+import io.github.valetechtalks.giftgiver.repositories.AttendeesRepository;
 import io.github.valetechtalks.giftgiver.services.DatabaseSession;
 import io.github.valetechtalks.giftgiver.services.MeetupConsumer;
 import org.json.JSONArray;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class RefreshController {
     private DatabaseSession db;
     private MeetupConsumer meetup;
+    private AttendeesRepository repos;
 
     public RefreshController() {
-        this.db = new DatabaseSession();
         this.meetup = new MeetupConsumer();
+        this.db = new DatabaseSession();
+        this.repos = new AttendeesRepository(this.db);
     }
 
     @PostMapping("/refresh")
@@ -28,7 +31,7 @@ public class RefreshController {
                 JSONObject item = results.getJSONObject(i);
                 JSONObject member = item.getJSONObject("member");
 
-                Attendee attendee = this.db.findBy(Attendee.class, "vendorUserId", member.getLong("id"));
+                Attendee attendee = this.repos.findBy("vendorUserId", member.getLong("id"));
 
                 this.db.beginTransaction();
                 if (attendee == null) {
@@ -39,7 +42,7 @@ public class RefreshController {
 
                 attendee.setName(member.getString("name"));
 
-                this.db.save(attendee);
+                this.repos.save(attendee);
                 this.db.commitTransaction();
             }
 
