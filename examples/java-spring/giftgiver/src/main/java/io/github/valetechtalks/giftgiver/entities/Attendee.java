@@ -1,27 +1,24 @@
 package io.github.valetechtalks.giftgiver.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "attendees")
 public class Attendee {
-    private final int id;
-    private final Long vendorUserId;
-    private final String name;
-    private final String rsvpAnswer;
-    private final boolean awarded;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int id;
+    private Long vendorUserId;
+    private String name;
+    private String rsvpAnswer;
+    private boolean awarded;
 
-    public Attendee(int id, Long vendorUserId, String name, String rsvpAnswer, boolean awarded) {
+    public Attendee() { }
+
+    public Attendee(int id) {
         this.id = id;
-        this.vendorUserId = vendorUserId;
-        this.name = name;
-        this.rsvpAnswer = rsvpAnswer;
-        this.awarded = false;
     }
 
-    @Id
     public int getId() {
         return id;
     }
@@ -30,15 +27,31 @@ public class Attendee {
         return vendorUserId;
     }
 
+    public void setVendorUserId(Long vendorUserId) {
+        this.vendorUserId = vendorUserId;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getRsvpAnswer() {
         return rsvpAnswer;
     }
 
+    public void setRsvpAnswer(String rsvpAnswer) {
+        this.rsvpAnswer = rsvpAnswer;
+    }
+
     public boolean isAwarded() {
         return awarded;
+    }
+
+    public void setAwarded(boolean awarded) {
+        this.awarded = awarded;
     }
 }
