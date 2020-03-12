@@ -1,4 +1,4 @@
-package io.github.valetechtalks.giftgiver.controllers.controllers;
+package io.github.valetechtalks.giftgiver.controllers;
 
 import io.github.valetechtalks.giftgiver.entities.Attendee;
 import io.github.valetechtalks.giftgiver.repositories.AttendeesRepository;

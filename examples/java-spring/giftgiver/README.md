@@ -7,7 +7,7 @@
 - Sqlite3
 - Maven
 
-## Prepare and Run
+## Start the application
 
 ```shell
 ./mvnw spring-boot:run
