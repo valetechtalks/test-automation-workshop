@@ -14,14 +14,18 @@ class Attendee extends Model
         'awarded' => false,
     ];
 
+    protected $casts = [
+        'awarded' => 'boolean',
+    ];
+
     public function scopeNotAwarded($query)
     {
-        return $query->where('awarded', 0);
+        return $query->where('awarded', false);
     }
 
     public function scopeAwarded($query)
     {
-        return $query->where('awarded', 1);
+        return $query->where('awarded', true);
     }
 
     public function scopeMemberId($query, $memberId)
