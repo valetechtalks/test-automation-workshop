@@ -34,4 +34,20 @@ public class AttendeesController {
 
         return attendees;
     }
+
+    @GetMapping("/attendees/awarded")
+    public List<Attendee> awarded() {
+        List<Attendee> attendees = new ArrayList<Attendee>();
+
+        try {
+            this.db.open();
+            attendees = this.repos.findAllBy("awarded", true, "updatedAt", "desc");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally{
+            this.db.close();
+        }
+
+        return attendees;
+    }
 }

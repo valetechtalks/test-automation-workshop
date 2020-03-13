@@ -44,4 +44,10 @@ public class AttendeesRepository extends Repository implements IRepository {
         List<Attendee> attendees = this.findAll(Attendee.class);
         return attendees;
     }
+
+    @Override
+    public List<Attendee> findAllBy(String field, Object value, String orderBy, String direction) {
+        List<Attendee> attendees = this.where(Attendee.class, field, value, orderBy, direction);
+        return attendees;
+    }
 }
