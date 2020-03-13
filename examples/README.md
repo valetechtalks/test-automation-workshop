@@ -23,6 +23,7 @@ The database schema may slightly vary from one application to another.
   + `vendor_user_id` (string, required, unique) user id from meetup.com or other network
   + `rsvp_answer` (string, optional) answer for rsvp question
   + `awarded` (boolean, required) true if the attendee already received a prize
+  + `image_url` (string, optional) attendee image url
 
 ## Endpoints
 

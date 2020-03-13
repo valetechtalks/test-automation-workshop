@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20200310193940_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200310193940_InitialCreate.cs" />
+    <Compile Remove="Migrations\GiftGiverContextModelSnapshot.cs" />
+    <Compile Remove="Migrations\20200310194324_UpdateAttendeeVendorUserIdType.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Models\Meetup\" />
+    <Folder Include="Models\Database\" />
+    <Folder Include="Extension\" />
+    <Folder Include="Policy\" />
+  </ItemGroup>
+</Project>
