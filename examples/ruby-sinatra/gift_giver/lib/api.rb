@@ -22,7 +22,8 @@ class Api < Sinatra::Base
       status 201
       json attendee
     else
-      server_error
+      status 422
+      json message: 'All attendees were already awarded.'
     end
   end
 
@@ -31,14 +32,13 @@ class Api < Sinatra::Base
       status 201
       json message: 'Successfully refreshed attendees.'
     else
-      server_error
+      status 500
+      json message: 'Something went wrong!'
     end
   end
 
-  private
-
-  def server_error
-    status 500
-    json message: 'Something went wrong!'
+  delete '/refresh' do
+    Attendee.destroy_all
+    json message: 'Successfully deleted all attendees.'
   end
 end
