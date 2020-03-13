@@ -24,11 +24,6 @@ public class AttendeesRepository extends Repository implements IRepository {
     }
 
     @Override
-    public Attendee findBy(String field, Object value, String orderBy, String direction) {
-        Attendee attendee = this.findBy(Attendee.class, field, value, orderBy, direction);
-        return attendee;
-    }
-
     public Attendee getRandom() {
         List<Attendee> attendees = this.where(Attendee.class, "awarded", false, "createdAt", "asc");
 
