@@ -46,7 +46,7 @@ namespace GiftGiver.Controllers
                     responseStream,
                     options
                     );
-                
+
                 foreach (var eventInfo in events)
                 {
                     var attendee = _context.Attendees.Where(attendee => attendee.VendorUserId == eventInfo.Member.Id).FirstOrDefault();
