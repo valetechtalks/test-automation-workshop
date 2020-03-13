@@ -22,6 +22,7 @@ O modelo do banco de dados pode variar ligeiramente de uma aplicação para outr
   + `vendor_user_id` (texto, requerido, único) id de usuário do meetup.com
   + `rsvp_answer` (texto, opcional) resposta para a pergunta no momento da inscrição
   + `awarded` (boolean, requerido) verdadeiro se participante já recebeu um prêmio
+  + `image_url` (string, opicional) url da imagem do participante
 
 
 ## Endpoints

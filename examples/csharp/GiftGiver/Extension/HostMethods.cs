@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-public static class ExtensionMethods
+public static class HostMethods
 {
     public static IHost CreateDatabase<T>(this IHost webHost) where T : DbContext
     {

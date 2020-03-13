@@ -23,5 +23,6 @@
     <Folder Include="Models\Meetup\" />
     <Folder Include="Models\Database\" />
     <Folder Include="Extension\" />
+    <Folder Include="Policy\" />
   </ItemGroup>
 </Project>
