@@ -1,5 +1,7 @@
 package io.github.valetechtalks.giftgiver.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.github.valetechtalks.giftgiver.serializers.AttendeeSerializer;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.UniqueElements;
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "attendees")
+@JsonSerialize(using = AttendeeSerializer.class)
 public class Attendee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
