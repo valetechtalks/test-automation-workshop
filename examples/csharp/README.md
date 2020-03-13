@@ -2,6 +2,7 @@
 
 # Dependencies
 
+- [.NET Core 3.1](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.2/3.1.2.md)
 - [EntityFrameworkCore 3.1.2](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.1.2)
 - [EntityFrameworkCore.Sqlite 3.1.2](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite/3.1.2)
 
