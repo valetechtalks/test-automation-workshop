@@ -22,7 +22,7 @@ public class RefreshController {
     }
 
     @PostMapping("/refresh")
-    public void Index() {
+    public void refresh() {
         try {
             JSONArray results = meetup.getRSVPs();
             this.db.open();

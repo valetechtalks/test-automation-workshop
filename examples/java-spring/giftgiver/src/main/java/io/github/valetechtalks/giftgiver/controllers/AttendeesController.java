@@ -20,7 +20,7 @@ public class AttendeesController {
     }
 
     @GetMapping("/attendees")
-    public List<Attendee> Index() {
+    public List<Attendee> index() {
         List<Attendee> attendees = new ArrayList<Attendee>();
 
         try {
