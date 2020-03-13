@@ -1,0 +1,30 @@
+ruby '2.7.0'
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'sinatra-contrib', require: false
+gem 'activerecord', require: 'active_record'
+gem 'sinatra-activerecord', require: 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'thin'
+gem 'tux'
+gem 'httparty'
+
+group :development, :test do
+  gem 'dotenv'
+  gem 'sqlite3'
+  gem 'pry'
+  gem 'shotgun'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+  gem 'database_cleaner'
+end
+
+group :production do
+  gem 'pg'
+end
