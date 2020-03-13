@@ -4,6 +4,7 @@ import io.github.valetechtalks.giftgiver.entities.Attendee;
 import io.github.valetechtalks.giftgiver.services.DatabaseSession;
 
 import java.util.List;
+import java.util.Random;
 
 public class AttendeesRepository extends Repository implements IRepository {
     public AttendeesRepository(DatabaseSession db) {
@@ -29,7 +30,13 @@ public class AttendeesRepository extends Repository implements IRepository {
     }
 
     public Attendee getRandom() {
-        return this.findBy("awarded", false, "RANDOM()", "asc");
+        List<Attendee> attendees = this.where(Attendee.class, "awarded", false, "createdAt", "asc");
+
+        Random rand = new Random();
+        int index = rand.nextInt(attendees.size());
+
+        Attendee drawn = attendees.get(index);
+        return drawn;
     }
 
     @Override

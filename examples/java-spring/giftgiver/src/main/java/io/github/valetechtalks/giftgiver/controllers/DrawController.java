@@ -23,13 +23,17 @@ public class DrawController {
         try {
             this.db.open();
             attendee = this.repos.getRandom();
+            this.db.beginTransaction();
 
             if (attendee != null) {
                 attendee.setAwarded(true);
                 this.repos.save(attendee);
             }
+
+            this.db.commitTransaction();
         } catch (Exception ex) {
             ex.printStackTrace();
+            this.db.rollbackTransaction();
         } finally{
             this.db.close();
         }
