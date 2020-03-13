@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+application.properties
 
 # Ignore the default SQLite database.
 **/db/*.sqlite3

@@ -10,5 +10,6 @@
 ## Start the application
 
 ```shell
+cp src/main/resources/application.properties.sample src/main/resources/application.properties
 ./mvnw spring-boot:run
 ```
