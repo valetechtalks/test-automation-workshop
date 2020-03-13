@@ -84,3 +84,9 @@ Url to fetch RSVP from:
 
 - https://api.meetup.com/valetechtalks/events/268854460/rsvps?&sign=true&photo-host=public&fields=answers
 
+
+
+## Postman
+
+You can use Postman as a client. The Postman JSON brings the endpoints pre-configurated.
+You can check [online](https://documenter.getpostman.com/view/1873719/SzS2w7se?version=latest) too.

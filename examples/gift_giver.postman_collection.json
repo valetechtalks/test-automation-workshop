@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "76e2f971-1d30-4998-b083-a3260534b8cc",
+		"name": "gift_giver",
+		"description": "App used in the test automation workshop:\nhttps://github.com/valetechtalks/test-automation-workshop/tree/master/examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Attendees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/attendees",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"attendees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Attendee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/attendees",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"attendees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Draw Attendee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/attendees/draw",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"attendees",
+						"draw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Attendees Awarded",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/attendees/awarded",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"attendees",
+						"awarded"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Meetup Attendees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/refresh",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "b818d915-4f47-48ff-879d-ed7250c8819e",
+			"key": "HOST",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"id": "695e1ce7-09d2-48c1-be9a-56032fbf7e62",
+			"key": "PORT",
+			"value": "3000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
